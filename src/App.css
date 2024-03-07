@@ -1,0 +1,236 @@
+.main {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  height: 100vh;
+}
+
+.sidebar {
+  background: #ccc;
+  border: 1px solid #fff;
+  padding: 4px 8px;
+  color: #000;
+  text-align: center;
+  width: 250px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+/* tree css */
+
+.treeView {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  overflow-x: scroll;
+}
+
+.treeView .treeViewChild {
+  width: max-content;
+  margin: 20px auto;
+}
+
+.treeView ul {
+  padding-top: 20px;
+  position: relative;
+  transition: 0.5s;
+  padding-inline: 0;
+}
+
+.treeView li {
+  display: inline-table;
+  text-align: center;
+  list-style-type: none;
+  position: relative;
+  padding: 10px;
+  transition: 0.5s;
+}
+
+.treeView li::before,
+.treeView li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 1px solid #ccc;
+  width: 51%;
+  height: 10px;
+}
+
+.treeView li::after {
+  right: auto;
+  left: 50%;
+  border-left: 1px solid #ccc;
+}
+
+.treeView li:only-child::after,
+.treeView li:only-child::before {
+  display: none;
+}
+
+.treeView li:only-child {
+  padding-top: 0;
+}
+
+.treeView li:first-child::before,
+.treeView li:last-child::after {
+  border: 0 none;
+}
+
+.treeView li:last-child::before {
+  border-right: 1px solid #ccc;
+  border-radius: 0 5px 0 0;
+  -webkit-border-radius: 0 5px 0 0;
+  -moz-border-radius: 0 5px 0 0;
+}
+
+.treeView li:first-child::after {
+  border-radius: 5px 0 0 0;
+  -webkit-border-radius: 5px 0 0 0;
+  -moz-border-radius: 5px 0 0 0;
+}
+
+.treeView ul ul::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 1px solid #ccc;
+  width: 0;
+  height: 20px;
+}
+
+/*Hover-Section*/
+
+.treeView li .card:hover,
+.treeView li .card:hover + ul li .card,
+.treeView li .card.active {
+  background: #c8e4f8;
+  color: #000;
+  border: 1px solid #94a0b4;
+}
+
+.treeView li .card:hover + ul li::after,
+.treeView li .card:hover + ul li::before,
+.treeView li .card:hover + ul::before,
+.treeView li .card:hover + ul ul::before {
+  border-color: #94a0b4;
+}
+
+.card {
+  width: auto;
+  height: 80px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: grid;
+  grid: auto-flow / 1fr 2fr;
+  border-radius: 5px;
+  text-decoration-line: none;
+  border-radius: 5px;
+  transition: 0.5s;
+  background: #f8f3f3;
+  color: black;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  margin: 10px 2px 0px 2px;
+}
+
+.card img {
+  width: 50px;
+  height: 50px;
+}
+
+.card .userName,
+.card .teamName {
+  font-weight: bold;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.card .designation {
+  font-size: 10px;
+  margin: 0;
+}
+
+.treeView .card {
+  width: 150px;
+  margin: auto;
+}
+
+.treeView .card {
+  cursor: move;
+}
+
+.treeView .card.dragging {
+  opacity: 0.5;
+}
+
+.searchBar {
+  background: #fff;
+  display: flex;
+  padding: 2px;
+  border-radius: 4px;
+  height: 50px;
+  padding: 2px 2px 2px 5px;
+}
+
+.searchBar .searchIcon {
+  display: flex;
+  align-items: center;
+}
+
+#select {
+  background: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #000;
+  width: 25px;
+  padding: 25px 20px;
+  cursor: pointer;
+  position: relative;
+  border-radius: 4px;
+}
+
+#select ul {
+  position: absolute;
+  border-radius: 4px;
+  width: 100px;
+  background: #fff;
+  color: #000;
+  list-style: none;
+  right: 0;
+  top: 80%;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s;
+  border: 1px solid #ccc;
+}
+
+#select ul li {
+  cursor: pointer;
+  padding: 2px 4px;
+  margin: 4px;
+}
+
+#select ul li:hover,
+#select ul li.activeOption {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.searchBar input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: #fff;
+  color: #000;
+  font-size: 16px;
+}
+
+#select ul.open {
+  max-height: 300px;
+}
