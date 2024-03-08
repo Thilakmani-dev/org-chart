@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createServer } from "miragejs";
 
-import EMPLOYEE_JSON from "./EmployeeDB.json";
 import ORG_DATA from "./OrgDB.json";
 
 import App from "./App.jsx";
@@ -12,14 +11,10 @@ createServer({
   routes() {
     (this.namespace = "org"),
       this.get("/api/employees", () => {
-        return EMPLOYEE_JSON;
+        return ORG_DATA;
       });
     this.get("/api/org", () => {
       return ORG_DATA;
-    });
-    this.post("/api/org", (schema, request) => {
-      let attrs = JSON.parse(request.requestBody);
-      console.log(attrs, schema);
     });
   },
 });
