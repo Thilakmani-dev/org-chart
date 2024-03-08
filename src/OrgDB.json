@@ -1,4 +1,97 @@
 {
+  "employees": [
+    {
+      "id": 2021,
+      "name": "Mila James",
+      "designation": "Manager",
+      "profileImg": "https://robohash.org/Felicity.png?set=set4",
+      "teamName": "Apps"
+    },
+    {
+      "id": 3000,
+      "name": "Mark",
+      "designation": "Product Owner",
+      "profileImg": "https://robohash.org/Felicity.png?set=set4",
+      "teamId": null
+    },
+    {
+      "id": 1033,
+      "name": "Zoey Powell",
+      "designation": "Senior Software Engineer",
+      "profileImg": "https://robohash.org/Jeanne.png?set=set4",
+      "teamName": "Apps"
+    },
+    {
+      "id": 1045,
+      "name": "Tessa Davis",
+      "designation": "Senior Software Engineer",
+      "profileImg": "https://robohash.org/Sheldon.png?set=set4",
+      "teamName": "Apps"
+    },
+    {
+      "id": 1093,
+      "name": "Karthick",
+      "designation": "Test Engineer",
+      "profileImg": "https://robohash.org/Miles.png?set=set4",
+      "teamName": "Apps"
+    },
+    {
+      "id": 2022,
+      "name": "Rahul",
+      "designation": "Manager",
+      "profileImg": "https://robohash.org/Alison.png?set=set4",
+      "teamName": "Board"
+    },
+    {
+      "id": 1037,
+      "name": "Layla Sanders",
+      "designation": "Senior Software Engineer",
+      "profileImg": "https://robohash.org/Mavis.png?set=set4",
+      "teamName": "Board"
+    },
+    {
+      "id": 1043,
+      "name": "Rebecca Bell",
+      "designation": "Software Engineer",
+      "profileImg": "https://robohash.org/Alison.png?set=set4",
+      "teamName": "Board"
+    },
+    {
+      "id": 1025,
+      "name": "Jack Hill",
+      "designation": "Senior Software Engineer",
+      "profileImg": "https://robohash.org/Miles.png?set=set4",
+      "teamName": "Board"
+    },
+    {
+      "id": 2025,
+      "name": "Valerie Fisher",
+      "designation": "Manager",
+      "profileImg": "https://robohash.org/Felicity.png?set=set4",
+      "teamName": "Platform"
+    },
+    {
+      "id": 1032,
+      "name": "Thilakmani",
+      "designation": "Software Engineer",
+      "profileImg": "https://robohash.org/Felicity.png?set=set4",
+      "teamName": "Platform"
+    },
+    {
+      "id": 1038,
+      "name": "Vimal",
+      "designation": "Test Engineer",
+      "profileImg": "https://robohash.org/Felicity.png?set=set4",
+      "teamName": "Platform"
+    },
+    {
+      "id": 1044,
+      "name": "Manikandan",
+      "designation": "Software Engineer",
+      "profileImg": "https://robohash.org/Felicity.png?set=set4",
+      "teamName": "Platform"
+    }
+  ],
   "org": {
     "id": 3000,
     "name": "Mark",
@@ -13,33 +106,25 @@
         "profileImg": "https://robohash.org/Felicity.png?set=set4",
         "children": [
           {
-            "id": 1090,
-            "name": "Kumar",
-            "designation": "Lead Engineer",
-            "profileImg": "https://robohash.org/Terrill.png?set=set4",
-            "children": [
-              {
-                "id": 1033,
-                "name": "Zoey Powell",
-                "designation": "Senior Software Engineer",
-                "profileImg": "https://robohash.org/Jeanne.png?set=set4",
-                "children": []
-              },
-              {
-                "id": 1045,
-                "name": "Tessa Davis",
-                "designation": "Senior Software Engineer",
-                "profileImg": "https://robohash.org/Sheldon.png?set=set4",
-                "children": []
-              },
-              {
-                "id": 1093,
-                "name": "Karthick",
-                "designation": "Lead Engineer",
-                "profileImg": "https://robohash.org/Miles.png?set=set4",
-                "children": []
-              }
-            ]
+            "id": 1033,
+            "name": "Zoey Powell",
+            "designation": "Senior Software Engineer",
+            "profileImg": "https://robohash.org/Jeanne.png?set=set4",
+            "children": []
+          },
+          {
+            "id": 1045,
+            "name": "Tessa Davis",
+            "designation": "Senior Software Engineer",
+            "profileImg": "https://robohash.org/Sheldon.png?set=set4",
+            "children": []
+          },
+          {
+            "id": 1093,
+            "name": "Karthick",
+            "designation": "Test Engineer",
+            "profileImg": "https://robohash.org/Miles.png?set=set4",
+            "children": []
           }
         ]
       },
@@ -51,33 +136,25 @@
         "profileImg": "https://robohash.org/Alison.png?set=set4",
         "children": [
           {
-            "id": 1090,
-            "name": "Kumar",
-            "designation": "Lead Engineer",
-            "profileImg": "https://robohash.org/Terrill.png?set=set4",
-            "children": [
-              {
-                "id": 1037,
-                "name": "Layla Sanders",
-                "designation": "Senior Software Engineer",
-                "profileImg": "https://robohash.org/Mavis.png?set=set4",
-                "children": []
-              },
-              {
-                "id": 1043,
-                "name": "Rebecca Bell",
-                "designation": "Software Engineer",
-                "profileImg": "https://robohash.org/Alison.png?set=set4",
-                "children": []
-              },
-              {
-                "id": 1025,
-                "name": "Jack Hill",
-                "designation": "Senior Software Engineer",
-                "profileImg": "https://robohash.org/Miles.png?set=set4",
-                "children": []
-              }
-            ]
+            "id": 1037,
+            "name": "Layla Sanders",
+            "designation": "Senior Software Engineer",
+            "profileImg": "https://robohash.org/Mavis.png?set=set4",
+            "children": []
+          },
+          {
+            "id": 1043,
+            "name": "Rebecca Bell",
+            "designation": "Software Engineer",
+            "profileImg": "https://robohash.org/Alison.png?set=set4",
+            "children": []
+          },
+          {
+            "id": 1025,
+            "name": "Jack Hill",
+            "designation": "Senior Software Engineer",
+            "profileImg": "https://robohash.org/Miles.png?set=set4",
+            "children": []
           }
         ]
       },
@@ -89,33 +166,25 @@
         "profileImg": "https://robohash.org/Felicity.png?set=set4",
         "children": [
           {
-            "id": 1080,
-            "name": "Thiakmani",
-            "designation": "Lead Engineer",
+            "id": 1032,
+            "name": "Thilakmani",
+            "designation": "Software Engineer",
             "profileImg": "https://robohash.org/Felicity.png?set=set4",
-            "children": [
-              {
-                "id": 1032,
-                "name": "Liam Parker",
-                "designation": "Software Engineer",
-                "profileImg": "https://robohash.org/Felicity.png?set=set4",
-                "children": []
-              },
-              {
-                "id": 1038,
-                "name": "Vimal",
-                "designation": "Test Engineer",
-                "profileImg": "https://robohash.org/Felicity.png?set=set4",
-                "children": []
-              },
-              {
-                "id": 1044,
-                "name": "Samuel Clark",
-                "designation": "Software Engineer",
-                "profileImg": "https://robohash.org/Felicity.png?set=set4",
-                "children": []
-              }
-            ]
+            "children": []
+          },
+          {
+            "id": 1038,
+            "name": "Vimal",
+            "designation": "Test Engineer",
+            "profileImg": "https://robohash.org/Felicity.png?set=set4",
+            "children": []
+          },
+          {
+            "id": 1044,
+            "name": "Manikandan",
+            "designation": "Software Engineer",
+            "profileImg": "https://robohash.org/Felicity.png?set=set4",
+            "children": []
           }
         ]
       }
