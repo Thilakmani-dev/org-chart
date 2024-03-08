@@ -4,3 +4,8 @@ export const TEAM_NAMES = [
   { id: 2022, name: "Board" },
   { id: 2025, name: "Platform" },
 ];
+
+export const DESIGNATION_TYPES = {
+  MANAGER: "Manager",
+  PRODUCT_OWNER: "Product Owner",
+};

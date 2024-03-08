@@ -17,7 +17,10 @@ const Sidebar = () => {
     const employeesData = await getEmployees();
     const filteredData = employeesData.employees.filter((employee) => {
       if (selectedTeam.name === "All")
-        return employee.name.toLowerCase().includes(searchedValue);
+        return (
+          employee.name.toLowerCase().includes(searchedValue) ||
+          employee.designation.toLowerCase().includes(searchedValue)
+        );
       return (
         employee.name.toLowerCase().includes(searchedValue) &&
         employee.teamName === selectedTeam.name

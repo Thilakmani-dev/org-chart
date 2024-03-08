@@ -139,8 +139,7 @@
   height: 50px;
 }
 
-.card .userName,
-.card .teamName {
+.card .userName {
   font-weight: bold;
   font-size: 10px;
   text-transform: uppercase;
@@ -148,9 +147,22 @@
   margin: 0;
 }
 
+.card .teamName {
+  font-weight: bold;
+  font-size: 10px;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
 .card .designation {
   font-size: 10px;
   margin: 0;
+}
+
+.card .cardLeftContent {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .treeView .card {
