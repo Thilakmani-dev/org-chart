@@ -166,6 +166,11 @@
   opacity: 0.5;
 }
 
+.treeView .isDroppable {
+  background: #eadcdc;
+  border: 1px solid #ccc;
+}
+
 .searchBar {
   background: #fff;
   display: flex;

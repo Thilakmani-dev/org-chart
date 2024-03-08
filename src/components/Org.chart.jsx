@@ -34,9 +34,16 @@ const TreeView = ({ data }) => {
     const draggables = document.querySelectorAll(".draggable");
     const droppables = document.querySelectorAll(".droppable");
 
-    function dragOverHandler(e, zone) {
-      e.preventDefault();
-      zoneRef.current = zone.id;
+    function dragOverHandler(evt, zone) {
+      evt.preventDefault();
+      zone.classList.add("isDroppable");
+      zoneRef.current = zone;
+    }
+
+    function dragLeaveHandler(evt, zone) {
+      evt.preventDefault();
+      zone.classList.remove("isDroppable");
+      zoneRef.current = null;
     }
 
     draggables.forEach((draggableElement) => {
@@ -49,8 +56,9 @@ const TreeView = ({ data }) => {
     });
 
     droppables.forEach((zone) => {
-      zone.addEventListener("dragover", (e) => dragOverHandler(e, zone));
-      zone.addEventListener("dragenter", (e) => dragOverHandler(e, zone));
+      zone.addEventListener("dragover", (evt) => dragOverHandler(evt, zone));
+      zone.addEventListener("dragenter", (evt) => dragOverHandler(evt, zone));
+      zone.addEventListener("dragleave", (evt) => dragLeaveHandler(evt, zone));
     });
 
     return () => {
@@ -64,11 +72,14 @@ const TreeView = ({ data }) => {
       });
 
       droppables.forEach((zone) => {
-        zone.removeEventListener("dragover", (event) =>
-          dragOverHandler(event, zone)
+        zone.removeEventListener("dragover", (evt) =>
+          dragOverHandler(evt, zone)
         );
-        zone.removeEventListener("dragenter", (event) =>
-          dragOverHandler(event, zone)
+        zone.removeEventListener("dragenter", (evt) =>
+          dragOverHandler(evt, zone)
+        );
+        zone.addEventListener("dragleave", (evt) =>
+          dragLeaveHandler(evt, zone)
         );
       });
     };
@@ -76,10 +87,11 @@ const TreeView = ({ data }) => {
 
   function dropHandler(e) {
     e.preventDefault();
+    zoneRef.current.classList.remove("isDroppable");
     const isDraggingElement = document.querySelector(".isDragging");
     const updatedData = moveObjectByIdToTeam(
       parseInt(isDraggingElement.id),
-      parseInt(zoneRef.current),
+      parseInt(zoneRef.current.id),
       orgData
     );
     if (updatedData) updatedOrgData(updatedData);
