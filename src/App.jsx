@@ -3,7 +3,6 @@ import Sidebar from "./components/Sidebar";
 import OrgChart from "./components/Org.chart";
 import { createContext, useEffect, useState } from "react";
 import { TEAM_NAMES } from "./constant";
-import { findObjectById } from "./utils";
 
 export const OrgContext = createContext(null);
 
@@ -24,19 +23,24 @@ function App() {
     //deactive employee on team change
     setSelectedEmployee({});
     setSelectedTeam(selectedValue);
-    console.log(
-      "team change",
-      selectedValue.id,
-      findObjectById(selectedValue.id, orgData)
-    );
-    let updatedOrgData = findObjectById(selectedValue.id, orgData);
-    if (updatedOrgData) {
-      setFilteredOrgResults(updatedOrgData);
+    if (selectedValue.id === 3000) {
+      setFilteredOrgResults(orgData);
+      return;
     }
+    setFilteredOrgResults({
+      ...orgData,
+      children: [
+        orgData.children.find((child) => child.id === selectedValue.id),
+      ],
+    });
   }
 
   function changSelectedEmployee(employee) {
     setSelectedEmployee(employee);
+  }
+
+  function updatedOrgData(updatedData) {
+    setOrgData((prev) => ({ ...prev, updatedData }));
   }
 
   useEffect(function () {
@@ -52,6 +56,7 @@ function App() {
           handleTeamChange,
           selectedEmployee,
           changSelectedEmployee,
+          updatedOrgData,
         }}
       >
         <Sidebar />
