@@ -1,23 +1,14 @@
 import PropTypes from "prop-types";
 function EmployeeCard(props) {
-  const { name, designation, profileImg, isActive, teamName } = props;
-
-  function onDragStartHandler(e) {
-    console.log("drag start", e);
-    e.target.classList.add("dragging");
-  }
-
-  function onDragEndHandler(e) {
-    console.log("drag end", e);
-    e.target.classList.remove("dragging");
-  }
+  const { name, designation, profileImg, isActive, teamName, id } = props;
 
   return (
     <div
-      className={`card ${isActive && "active"}`}
-      draggable
-      onDragStart={onDragStartHandler}
-      onDragEnd={onDragEndHandler}
+      className={`card ${designation !== "Manager" && "draggable"} ${
+        isActive && "active"
+      }`}
+      draggable={designation !== "Manager"}
+      id={id}
     >
       <img src={profileImg} className="cardImg" alt={name} draggable={false} />
       <div>
@@ -37,4 +28,5 @@ EmployeeCard.propTypes = {
   profileImg: PropTypes.string,
   isActive: PropTypes.bool,
   teamName: PropTypes.string,
+  id: PropTypes.number,
 };
