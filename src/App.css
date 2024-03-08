@@ -22,6 +22,7 @@
   height: auto;
   text-align: center;
   overflow-x: scroll;
+  margin: auto;
 }
 
 .treeView .treeViewChild {
