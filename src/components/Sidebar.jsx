@@ -23,7 +23,6 @@ const Sidebar = () => {
         employee.teamName === selectedTeam.name
       );
     });
-    console.log("filtered", filteredData);
     setFilteredEmployees(filteredData);
     // } else {
     //   setFilteredEmployees([]);
@@ -103,11 +102,7 @@ const Sidebar = () => {
         filteredEmployees.map((employee) => {
           let { name, id, teamName, profileImg, designation } = employee;
           return (
-            <div
-              key={employee.id}
-              // className="employeeListItem"
-              onClick={() => openEmployeeDetail(employee)}
-            >
+            <div key={employee.id} onClick={() => openEmployeeDetail(employee)}>
               <EmployeeCard
                 name={name}
                 id={id}

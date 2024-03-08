@@ -1,10 +1,12 @@
 import PropTypes from "prop-types";
 import EmployeeCard from "./Employee.card";
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { OrgContext } from "../App";
 
+import { moveObjectByIdToTeam } from "../utils";
+
 const OrgChart = () => {
-  const { orgData, selectedTeam, selectedEmployee } = useContext(OrgContext);
+  const { orgData, selectedTeam } = useContext(OrgContext);
   console.log("rendering", orgData, selectedTeam);
 
   if (!orgData) return;
@@ -23,23 +25,78 @@ OrgChart.propTypes = {
 };
 
 const TreeView = ({ data }) => {
-  const { selectedEmployee } = useContext(OrgContext);
+  const { selectedEmployee, orgData, updatedOrgData } = useContext(OrgContext);
   const { name, designation, children, profileImg, id } = data;
 
-  function onDragOverHandler(e) {
-    console.info("~overing", e);
-    const draggingElement = document.querySelector(".dragging");
-    const droppableElement = document.querySelector(`#${id}`);
-    droppableElement.appendChild(draggingElement);
+  const zoneRef = useRef(null);
+
+  useEffect(function attachEventListeners() {
+    const draggables = document.querySelectorAll(".draggable");
+    const droppables = document.querySelectorAll(".droppable");
+
+    function dragOverHandler(e, zone) {
+      e.preventDefault();
+      zoneRef.current = zone.id;
+    }
+
+    draggables.forEach((draggableElement) => {
+      draggableElement.addEventListener("dragstart", () => {
+        draggableElement.classList.add("isDragging");
+      });
+      draggableElement.addEventListener("dragend", () => {
+        draggableElement.classList.remove("isDragging");
+      });
+    });
+
+    droppables.forEach((zone) => {
+      zone.addEventListener("dragover", (e) => dragOverHandler(e, zone));
+      zone.addEventListener("dragenter", (e) => dragOverHandler(e, zone));
+    });
+
+    return () => {
+      draggables.forEach((draggableElement) => {
+        draggableElement.removeEventListener("dragstart", () => {
+          draggableElement.classList.add("isDragging");
+        });
+        draggableElement.removeEventListener("dragend", () => {
+          draggableElement.classList.remove("isDragging");
+        });
+      });
+
+      droppables.forEach((zone) => {
+        zone.removeEventListener("dragover", (event) =>
+          dragOverHandler(event, zone)
+        );
+        zone.removeEventListener("dragenter", (event) =>
+          dragOverHandler(event, zone)
+        );
+      });
+    };
+  }, []);
+
+  function dropHandler(e) {
+    e.preventDefault();
+    const isDraggingElement = document.querySelector(".isDragging");
+    const updatedData = moveObjectByIdToTeam(
+      parseInt(isDraggingElement.id),
+      parseInt(zoneRef.current),
+      orgData
+    );
+    if (updatedData) updatedOrgData(updatedData);
   }
 
   return (
-    <li onDragOver={onDragOverHandler} id={id}>
+    <li
+      id={id}
+      className={designation === "Manager" ? "droppable" : undefined}
+      onDrop={dropHandler}
+    >
       <EmployeeCard
         name={name}
         designation={designation}
         profileImg={profileImg}
         isActive={selectedEmployee.id === id}
+        id={id}
       />
       {Array.isArray(children) && children.length > 0 && (
         <ul>
